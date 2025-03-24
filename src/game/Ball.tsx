@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { Image as KonvaImage, Group } from "react-konva";
+import useImage from "use-image";
 
 type BallProps = {
   /** 位置 */
@@ -32,19 +34,12 @@ type MovingBallProps = {
 
 /** 球 */
 export function Ball({ position, size, image }: BallProps) {
+  const [imageObj] = useImage(image);
+
   return (
-    <div
-      className="absolute"
-      style={{
-        left: `${position.x}px`,
-        top: `${position.y}px`,
-        width: `${size.width}px`,
-        height: `${size.height}px`,
-        backgroundImage: `url(${image})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    />
+    <Group x={position.x} y={position.y}>
+      <KonvaImage image={imageObj} width={size.width} height={size.height} />
+    </Group>
   );
 }
 
@@ -63,6 +58,7 @@ export function MovingBall({
   const [velocity, setVelocity] = useState(initialVelocity);
   const [isMoving, setIsMoving] = useState(true);
   const animationRef = useRef<number>(undefined);
+  const [imageObj] = useImage(image);
 
   // Calculate velocity magnitude
   const getVelocityMagnitude = (vel: { x: number; y: number }) => {
@@ -148,5 +144,9 @@ export function MovingBall({
     };
   }, [velocity, isMoving, size, fieldSize, friction, stopThreshold, onStop]);
 
-  return <Ball position={position} size={size} image={image} />;
+  return (
+    <Group x={position.x} y={position.y}>
+      <KonvaImage image={imageObj} width={size.width} height={size.height} />
+    </Group>
+  );
 }

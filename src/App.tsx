@@ -1,8 +1,17 @@
 import { useState } from "react";
-import { Ball, MovingBall } from "./game/Ball";
+import { Layer, Stage } from "react-konva";
 import ballImage from "./assets/react.svg";
+import { Ball, MovingBall } from "./game/Ball";
 
 export function App() {
+  return (
+    <div>
+      <Demo />
+    </div>
+  );
+}
+
+function Demo() {
   const fieldSize = { width: 600, height: 400 };
   const ballSize = { width: 40, height: 40 };
 
@@ -38,20 +47,24 @@ export function App() {
           height: `${fieldSize.height}px`,
         }}
       >
-        {isPlaying ? (
-          <MovingBall
-            position={ballPosition}
-            velocity={ballVelocity}
-            size={ballSize}
-            fieldSize={fieldSize}
-            image={ballImage}
-            friction={0.98}
-            stopThreshold={0.1}
-            onStop={handleStop}
-          />
-        ) : (
-          <Ball position={ballPosition} size={ballSize} image={ballImage} />
-        )}
+        <Stage width={fieldSize.width} height={fieldSize.height}>
+          <Layer>
+            {isPlaying ? (
+              <MovingBall
+                position={ballPosition}
+                velocity={ballVelocity}
+                size={ballSize}
+                fieldSize={fieldSize}
+                image={ballImage}
+                friction={0.98}
+                stopThreshold={0.4}
+                onStop={handleStop}
+              />
+            ) : (
+              <Ball position={ballPosition} size={ballSize} image={ballImage} />
+            )}
+          </Layer>
+        </Stage>
       </div>
 
       <button onClick={handleShoot} disabled={isPlaying} className="mt-4">
@@ -60,5 +73,3 @@ export function App() {
     </div>
   );
 }
-
-export default App;
