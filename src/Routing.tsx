@@ -9,7 +9,15 @@ import { lazy, Suspense } from "react";
 
 export function Routing() {
   return (
-    <Suspense>
+    <Suspense
+      fallback={
+        <div className="flex items-center p-16">
+          <span className="loading loading-bars loading-xl text-primary">
+            Loading...
+          </span>
+        </div>
+      }
+    >
       <Switch>
         {/* <Route path="/" component={lazy(() => import("./routes/RootRoute"))} /> */}
         <Route path="/" component={lazy(() => import("./routes/RootRoute"))} />
