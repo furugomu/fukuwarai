@@ -2,7 +2,7 @@ import { useParams } from "wouter";
 import { findStageById } from "../game/data";
 import { GamePlay } from "../game/GamePlay";
 
-export function StageRoute() {
+export default function StageRoute() {
   const { id } = useParams();
   if (!id) return <NotFound />;
   const stage = findStageById(id);

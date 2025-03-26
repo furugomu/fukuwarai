@@ -1,6 +1,6 @@
 import { stages } from "../game/data";
 
-export function RootRoute() {
+export default function RootRoute() {
   return (
     <div className="flex flex-col w-80 items-center gap-4 py-4">
       <div className="text-2xl">遊びたい顔を選んでね</div>

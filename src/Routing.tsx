@@ -5,14 +5,16 @@
 */
 
 import { Route, Switch } from "wouter";
-import { RootRoute } from "./routes/RootRoute";
-import { StageRoute } from "./routes/StageRoute";
+import { lazy } from "react";
 
 export function Routing() {
   return (
     <Switch>
-      <Route path="/" component={RootRoute} />
-      <Route path="/stages/:id" component={StageRoute} />
+      <Route path="/" component={lazy(() => import("./routes/RootRoute"))} />
+      <Route
+        path="/stages/:id"
+        component={lazy(() => import("./routes/StageRoute"))}
+      />
     </Switch>
   );
 }
