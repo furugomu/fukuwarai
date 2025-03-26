@@ -26,6 +26,12 @@ export default function RootRoute() {
           </li>
         ))}
       </ul>
+      <div>
+        <address className="flex flex-row gap-4">
+          <a href="https://github.com/furugomu/fukuwarai">GitHub</a>
+          <a href="https://x.com/furugomu">Twitter</a>
+        </address>
+      </div>
     </div>
   );
 }
