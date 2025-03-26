@@ -98,7 +98,7 @@ export function GamePlay({ stage }: { stage: Stage }) {
     setForce(force);
   };
   const handleShoot = (angle: number, force: number) => {
-    dispatch({ type: "shoot", angle, speed: (force / 5) ** 1.1 });
+    dispatch({ type: "shoot", angle, speed: (force / 5) ** 1.3 });
   };
 
   const konvaRef = useRef<Konva.Stage>(null);
