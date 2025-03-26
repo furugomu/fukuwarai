@@ -64,6 +64,8 @@ export function MovingBall({
   const getVelocityMagnitude = (vel: { x: number; y: number }) => {
     return Math.sqrt(vel.x * vel.x + vel.y * vel.y);
   };
+  // よくわからないが2回呼んじゃうので阻止
+  const onStopCalled = useRef(false);
 
   useEffect(() => {
     if (!isMoving) return;
@@ -115,8 +117,11 @@ export function MovingBall({
             Math.min(newY, fieldSize.height - size.height)
           );
 
-          // Call the onStop callback with the final position
-          onStop({ x: finalX, y: finalY });
+          if (!onStopCalled.current) {
+            // Call the onStop callback with the final position
+            onStop({ x: finalX, y: finalY });
+            onStopCalled.current = true;
+          }
 
           return { x: finalX, y: finalY };
         }

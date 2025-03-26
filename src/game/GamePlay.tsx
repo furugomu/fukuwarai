@@ -36,6 +36,7 @@ const useGame = (stage: Stage) => {
     (state: State, action: Action): State => {
       switch (action.type) {
         case "shoot":
+          if (state.phase !== "aiming") return state;
           return {
             ...state,
             phase: "shooting",
@@ -44,6 +45,7 @@ const useGame = (stage: Stage) => {
           };
         case "finishShooting": {
           console.debug("finishShooting", action, state);
+          if (state.phase !== "shooting") return state;
           const currentPart = stage.parts[state.currentPartIndex];
           if (!currentPart) return state;
           const phase =
