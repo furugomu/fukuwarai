@@ -9,6 +9,7 @@ export type Part = {
 export type Stage = {
   id: string;
   name: string;
+  description: string;
   cover: string;
   width: number;
   height: number;

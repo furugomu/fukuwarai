@@ -4,7 +4,7 @@ export default function RootRoute() {
   return (
     <div className="flex flex-col w-80 items-center gap-4 py-4">
       <div className="text-2xl">遊びたい顔を選んでね</div>
-      <ul>
+      <ul className="flex flex-col gap-4">
         {stages.map((stage) => (
           <li key={stage.id}>
             <a href={`/stages/${stage.id}`}>
@@ -17,8 +17,9 @@ export default function RootRoute() {
                   />
                 </figure>
 
-                <div className="card-body items-center">
+                <div className="card-body">
                   <h2 className="card-title">{stage.name}</h2>
+                  <p className="card-text">{stage.description}</p>
                 </div>
               </div>
             </a>
