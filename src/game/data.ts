@@ -1,4 +1,4 @@
-import { Stage } from "./types";
+import type { Stage } from "./types";
 import okameCover from "../assets/stages/okame/cover.png";
 import okameFace from "../assets/stages/okame/face.png";
 import okameEye1 from "../assets/stages/okame/eye1.png";

@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Image, Stage as KonvaStage, Layer } from "react-konva";
 import useImage from "use-image";
 import { type Stage } from "./types";
