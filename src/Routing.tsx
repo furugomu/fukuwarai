@@ -4,7 +4,7 @@
  /:stage => routes/StageRoute.tsx
 */
 
-import { Route, Switch } from "wouter";
+import { Redirect, Route, Switch } from "wouter";
 import { lazy, Suspense } from "react";
 
 export function Routing() {
@@ -25,6 +25,9 @@ export function Routing() {
           path="/stages/:id"
           component={lazy(() => import("./routes/StageRoute"))}
         />
+        <Route>
+          <Redirect to="/" />
+        </Route>
       </Switch>
     </Suspense>
   );
