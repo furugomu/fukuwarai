@@ -48,3 +48,8 @@ export const stage1 = {
     },
   ],
 } satisfies Stage;
+
+export const stages = [stage1] as const;
+
+export const findStageById = (id: string) =>
+  stages.find((stage) => stage.id === id);

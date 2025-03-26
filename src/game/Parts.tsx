@@ -6,7 +6,7 @@ type Props = {
 export function Parts({ parts }: Props) {
   // 横に並べてはみ出た分はスクロール
   return (
-    <div className="flex gap-2 overflow-x-auto max-w-[100%]">
+    <div className="flex gap-2 overflow-x-auto max-w-[100%] min-h-16">
       {parts.map((part) => (
         <Part key={part.id} part={part} />
       ))}

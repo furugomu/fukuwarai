@@ -1,14 +1,13 @@
 import title from "./assets/title.png";
-import { stage1 } from "./game/data";
-import { GamePlay } from "./game/GamePlay";
+import { Routing } from "./Routing";
 
 export function App() {
   return (
-    <div className="flex flex-col items-center gap-4 p-4">
-      <h1 className="text-2xl font-bold">
+    <div className="flex flex-col items-center gap-4 py-4">
+      <h1 className="text-2xl font-bold flex justify-center">
         <img src={title} alt="福笑い" height={69} />
       </h1>
-      <GamePlay stage={stage1} />
+      <Routing />
     </div>
   );
 }
