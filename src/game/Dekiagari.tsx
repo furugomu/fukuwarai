@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import complete from "../assets/complete.png";
 
 export function Dekiagari() {
   const [visible, setVisible] = useState(true);
@@ -37,8 +38,8 @@ export function Dekiagari() {
         ].join(","),
       }}
     >
-      <div className="absolute inset-0 flex items-center justify-center text-9xl font-bold">
-        できあがり！
+      <div className="absolute inset-0 flex items-center justify-center text-4xl font-bold">
+        <img src={complete} alt="できあがり" />
       </div>
     </div>
   );
