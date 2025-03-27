@@ -31,7 +31,8 @@ const useGame = (stage: Stage) => {
   };
   type Action =
     | { type: "shoot"; angle: number; speed: number }
-    | { type: "finishShooting"; position: { x: number; y: number } };
+    | { type: "finishShooting"; position: { x: number; y: number } }
+    | { type: "retry" };
   const [state, dispatch] = useReducer(
     (state: State, action: Action): State => {
       switch (action.type) {
@@ -64,6 +65,8 @@ const useGame = (stage: Stage) => {
             phase,
           };
         }
+        case "retry":
+          return initialState;
         default:
           return state;
       }
@@ -163,17 +166,18 @@ export function GamePlay({ stage }: { stage: Stage }) {
           <div className="text-2xl font-bold text-center">
             ともだちにみせてあげよう！
           </div>
-          {konvaRef.current && (
-            <div>
-              <a
-                href={konvaRef.current.toDataURL()}
-                download="fukuwarai.png"
-                className="btn btn-secondary"
-              >
-                絵を保存する
-              </a>
-            </div>
-          )}
+          <div className="flex flex-row gap-2">
+            <a
+              href={konvaRef.current?.toDataURL()}
+              download="fukuwarai.png"
+              className="btn"
+            >
+              絵を保存する
+            </a>
+            <button className="btn" onClick={() => dispatch({ type: "retry" })}>
+              もういちど遊ぶ
+            </button>
+          </div>
         </div>
       )}
       {(phase === "aiming" || phase === "shooting") && (
