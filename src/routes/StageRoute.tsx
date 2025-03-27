@@ -10,11 +10,9 @@ export default function StageRoute() {
   return <GamePlay stage={stage} />;
 }
 
-// でっかい「ないです」とトップページへのリンク
-// tailwindcss でデザインする
 const NotFound = () => {
   return (
-    <div className="flex flex-col items-center gap-4 p-4">
+    <div className="flex flex-col items-center gap-4 py-4">
       <h1 className="text-2xl font-bold">ないです</h1>
       <a href="/" className="text-blue-500">
         もどる

@@ -104,7 +104,7 @@ export function GamePlay({ stage }: { stage: Stage }) {
   const konvaRef = useRef<Konva.Stage>(null);
 
   return (
-    <div className="flex flex-col items-center gap-4 p-4">
+    <div className="flex flex-col items-center gap-4">
       <div className="flex items-center gap-4">
         <Field stage={stage} ref={konvaRef}>
           <Layer>
